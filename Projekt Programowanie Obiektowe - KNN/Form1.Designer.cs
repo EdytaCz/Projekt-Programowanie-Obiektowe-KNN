@@ -36,9 +36,10 @@
             this.tbDaneTestowe = new System.Windows.Forms.RichTextBox();
             this.ofdTrening = new System.Windows.Forms.OpenFileDialog();
             this.ofdTest = new System.Windows.Forms.OpenFileDialog();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nrcSasiedzi = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnLicz = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).BeginInit();
             this.SuspendLayout();
             // 
             // tbSciezkaTrening
@@ -103,18 +104,18 @@
             // 
             this.ofdTest.FileName = "openFileDialog2";
             // 
-            // numericUpDown1
+            // nrcSasiedzi
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(317, 110);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nrcSasiedzi.Location = new System.Drawing.Point(317, 110);
+            this.nrcSasiedzi.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nrcSasiedzi.Name = "nrcSasiedzi";
+            this.nrcSasiedzi.Size = new System.Drawing.Size(56, 20);
+            this.nrcSasiedzi.TabIndex = 6;
+            this.nrcSasiedzi.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -129,13 +130,24 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Ilość sąsiadów";
             // 
+            // btnLicz
+            // 
+            this.btnLicz.Location = new System.Drawing.Point(298, 146);
+            this.btnLicz.Name = "btnLicz";
+            this.btnLicz.Size = new System.Drawing.Size(75, 23);
+            this.btnLicz.TabIndex = 8;
+            this.btnLicz.Text = "Licz";
+            this.btnLicz.UseVisualStyleBackColor = true;
+            this.btnLicz.Click += new System.EventHandler(this.btnLicz_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 340);
+            this.Controls.Add(this.btnLicz);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nrcSasiedzi);
             this.Controls.Add(this.tbDaneTestowe);
             this.Controls.Add(this.tbDaneTreningowe);
             this.Controls.Add(this.btnWczytajTestowe);
@@ -145,7 +157,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,8 +173,9 @@
         private System.Windows.Forms.RichTextBox tbDaneTestowe;
         private System.Windows.Forms.OpenFileDialog ofdTrening;
         private System.Windows.Forms.OpenFileDialog ofdTest;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nrcSasiedzi;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLicz;
     }
 }
 

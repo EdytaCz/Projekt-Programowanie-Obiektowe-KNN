@@ -66,7 +66,10 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             tbSciezkaTest.Text = ofdTest.FileName;
             tbDaneTestowe.Text = knn.WyświetlenieSystemów(ref testowe);
         }
-
+        private void btnLicz_Click(object sender, EventArgs e)
+        {
+            knn.IlośćSąsiadów = Convert.ToInt16(nrcSasiedzi.Value);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
