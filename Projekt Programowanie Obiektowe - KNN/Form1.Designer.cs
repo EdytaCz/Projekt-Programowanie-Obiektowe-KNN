@@ -36,25 +36,32 @@
             this.tbDaneTestowe = new System.Windows.Forms.RichTextBox();
             this.ofdTrening = new System.Windows.Forms.OpenFileDialog();
             this.ofdTest = new System.Windows.Forms.OpenFileDialog();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbSciezkaTrening
             // 
+            this.tbSciezkaTrening.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbSciezkaTrening.Location = new System.Drawing.Point(23, 13);
             this.tbSciezkaTrening.Name = "tbSciezkaTrening";
-            this.tbSciezkaTrening.Size = new System.Drawing.Size(206, 20);
+            this.tbSciezkaTrening.ReadOnly = true;
+            this.tbSciezkaTrening.Size = new System.Drawing.Size(229, 20);
             this.tbSciezkaTrening.TabIndex = 0;
             // 
             // tbSciezkaTest
             // 
+            this.tbSciezkaTest.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbSciezkaTest.Location = new System.Drawing.Point(23, 61);
             this.tbSciezkaTest.Name = "tbSciezkaTest";
-            this.tbSciezkaTest.Size = new System.Drawing.Size(206, 20);
+            this.tbSciezkaTest.ReadOnly = true;
+            this.tbSciezkaTest.Size = new System.Drawing.Size(229, 20);
             this.tbSciezkaTest.TabIndex = 1;
             // 
             // btnWczytajTreningowe
             // 
-            this.btnWczytajTreningowe.Location = new System.Drawing.Point(235, 1);
+            this.btnWczytajTreningowe.Location = new System.Drawing.Point(258, 1);
             this.btnWczytajTreningowe.Name = "btnWczytajTreningowe";
             this.btnWczytajTreningowe.Size = new System.Drawing.Size(115, 42);
             this.btnWczytajTreningowe.TabIndex = 2;
@@ -64,7 +71,7 @@
             // 
             // btnWczytajTestowe
             // 
-            this.btnWczytajTestowe.Location = new System.Drawing.Point(235, 49);
+            this.btnWczytajTestowe.Location = new System.Drawing.Point(258, 49);
             this.btnWczytajTestowe.Name = "btnWczytajTestowe";
             this.btnWczytajTestowe.Size = new System.Drawing.Size(115, 42);
             this.btnWczytajTestowe.TabIndex = 3;
@@ -74,16 +81,20 @@
             // 
             // tbDaneTreningowe
             // 
+            this.tbDaneTreningowe.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbDaneTreningowe.Location = new System.Drawing.Point(23, 112);
             this.tbDaneTreningowe.Name = "tbDaneTreningowe";
+            this.tbDaneTreningowe.ReadOnly = true;
             this.tbDaneTreningowe.Size = new System.Drawing.Size(100, 124);
             this.tbDaneTreningowe.TabIndex = 4;
             this.tbDaneTreningowe.Text = "";
             // 
             // tbDaneTestowe
             // 
+            this.tbDaneTestowe.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbDaneTestowe.Location = new System.Drawing.Point(129, 112);
             this.tbDaneTestowe.Name = "tbDaneTestowe";
+            this.tbDaneTestowe.ReadOnly = true;
             this.tbDaneTestowe.Size = new System.Drawing.Size(100, 124);
             this.tbDaneTestowe.TabIndex = 5;
             this.tbDaneTestowe.Text = "";
@@ -92,11 +103,39 @@
             // 
             this.ofdTest.FileName = "openFileDialog2";
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(317, 110);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDown1.TabIndex = 6;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(235, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Ilość sąsiadów";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 340);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.tbDaneTestowe);
             this.Controls.Add(this.tbDaneTreningowe);
             this.Controls.Add(this.btnWczytajTestowe);
@@ -105,6 +144,8 @@
             this.Controls.Add(this.tbSciezkaTrening);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +161,8 @@
         private System.Windows.Forms.RichTextBox tbDaneTestowe;
         private System.Windows.Forms.OpenFileDialog ofdTrening;
         private System.Windows.Forms.OpenFileDialog ofdTest;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

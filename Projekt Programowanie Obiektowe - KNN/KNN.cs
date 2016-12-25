@@ -10,7 +10,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
     {
         public int[][] daneTestoweWejściowe { get; set; }
         public int[][] daneTreningoweWejściowe { get; set; }
-
+        public int IlośćSąsiadów { get; set; }
         public string WyświetlenieSystemów(ref int[][] daneWejściowe)
         {
             string doWyświetlenia = string.Empty;
