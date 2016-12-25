@@ -54,17 +54,17 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         private void btnWczytajTreningowe_Click(object sender, EventArgs e)
         {
             knn.daneTreningoweWejściowe = WczytywanieZpliku(ref ofdTrening);
-            int[][] training = knn.daneTreningoweWejściowe;
+            int[][] treningowe = knn.daneTreningoweWejściowe;
             tbSciezkaTrening.Text = ofdTrening.FileName;
-
+            tbDaneTreningowe.Text = knn.WyświetlenieSystemów(ref treningowe);
         }
 
         private void btnWczytajTestowe_Click(object sender, EventArgs e)
         {
             knn.daneTestoweWejściowe = WczytywanieZpliku(ref ofdTest);
-            int[][] test = knn.daneTestoweWejściowe;
+            int[][] testowe = knn.daneTestoweWejściowe;
             tbSciezkaTest.Text = ofdTest.FileName;
-
+            tbDaneTestowe.Text = knn.WyświetlenieSystemów(ref testowe);
         }
     }
 }
