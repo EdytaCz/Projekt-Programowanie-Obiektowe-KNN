@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
-    class WartośćMetrykiDlaObiektu
+    public class WartośćMetrykiDlaObiektu
     {
-        public WartośćMetrykiDlaObiektu(int indeks, double wartość, int klasa)
+        public WartośćMetrykiDlaObiektu(double wartość, int indeks, int klasa)
         {
             IndeksObiektu = indeks;
             WartośćMetryki = wartość;

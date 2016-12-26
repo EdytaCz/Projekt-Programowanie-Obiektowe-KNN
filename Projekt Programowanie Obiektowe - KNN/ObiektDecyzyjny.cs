@@ -15,5 +15,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         }
         public List<int> atrybuty;
         public int klasaDecyzyjna { get; set; }
+
+        public List<WartośćMetrykiDlaObiektu> metryki = new List<WartośćMetrykiDlaObiektu>();
     }
 }

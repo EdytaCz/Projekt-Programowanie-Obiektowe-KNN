@@ -74,6 +74,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.daneTreningowe = knn.StwórzListęObiektów(knn.daneTreningoweWejściowe);
             knn.daneTestowe = knn.StwórzListęObiektów(knn.daneTestoweWejściowe);
             Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo) cbMetryki.SelectedItem);
+            knn.LiczMetryki(metryka);
         }
         private void Form1_Load(object sender, EventArgs e)
         {

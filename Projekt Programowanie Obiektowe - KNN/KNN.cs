@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
     public delegate double Metryka(ObiektDecyzyjny treningowy, ObiektDecyzyjny testowy);
-    class KNN
+    public class KNN
     {
         public int[][] daneTestoweWejściowe { get; set; }
         public int[][] daneTreningoweWejściowe { get; set; }
@@ -43,6 +43,23 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 listaTymczasowa.Add(new ObiektDecyzyjny(linijka));
             }
             return listaTymczasowa;
+        }
+
+        public void LiczMetryki(Metryka metryka)
+        {
+            for (int i = 0; i < daneTestowe.Count; i++)
+            {
+                foreach (var treningowe in daneTreningowe)
+                {
+                    daneTestowe[i].metryki.Add(
+                        new WartośćMetrykiDlaObiektu(
+                            metryka(treningowe, daneTestowe[i]),
+                            daneTreningowe.IndexOf(treningowe),
+                            treningowe.klasaDecyzyjna
+                        )
+                    );
+                }
+            }
         }
     }
 }
