@@ -11,6 +11,10 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         public int[][] daneTestoweWejściowe { get; set; }
         public int[][] daneTreningoweWejściowe { get; set; }
         public int IlośćSąsiadów { get; set; }
+
+        public List<ObiektDecyzyjny> daneTreningowe = new List<ObiektDecyzyjny>();
+        public List<ObiektDecyzyjny> daneTestowe = new List<ObiektDecyzyjny>();
+
         public string WyświetlenieSystemów(ref int[][] daneWejściowe)
         {
             string doWyświetlenia = string.Empty;
@@ -28,6 +32,16 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             }
 
             return doWyświetlenia;
+        }
+
+        public List<ObiektDecyzyjny> StwórzListęObiektów(int[][] dane)
+        {
+            var listaTymczasowa = new List<ObiektDecyzyjny>();
+            foreach (var linijka in dane)
+            {
+                listaTymczasowa.Add(new ObiektDecyzyjny(linijka));
+            }
+            return listaTymczasowa;
         }
     }
 }
