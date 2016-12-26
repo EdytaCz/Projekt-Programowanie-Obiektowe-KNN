@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -68,14 +69,17 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         }
         private void btnLicz_Click(object sender, EventArgs e)
         {
+            //do zrobienia: liczenie zablokowane przed wybraniem potrzebnych parametrów
             knn.IlośćSąsiadów = Convert.ToInt16(nrcSasiedzi.Value);
             knn.daneTreningowe = knn.StwórzListęObiektów(knn.daneTreningoweWejściowe);
             knn.daneTestowe = knn.StwórzListęObiektów(knn.daneTestoweWejściowe);
-
+            Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo) cbMetryki.SelectedItem);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            cbMetryki.DataSource = typeof(Metryki).GetMethods().Where(
+                metoda => metoda.ReturnType == typeof(double)).ToList();
+            cbMetryki.DisplayMember = "Name";
         }
     }
 }

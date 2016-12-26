@@ -39,6 +39,8 @@
             this.nrcSasiedzi = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLicz = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbMetryki = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +134,7 @@
             // 
             // btnLicz
             // 
-            this.btnLicz.Location = new System.Drawing.Point(298, 146);
+            this.btnLicz.Location = new System.Drawing.Point(238, 213);
             this.btnLicz.Name = "btnLicz";
             this.btnLicz.Size = new System.Drawing.Size(75, 23);
             this.btnLicz.TabIndex = 8;
@@ -140,11 +142,30 @@
             this.btnLicz.UseVisualStyleBackColor = true;
             this.btnLicz.Click += new System.EventHandler(this.btnLicz_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(235, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Metryka";
+            // 
+            // cbMetryki
+            // 
+            this.cbMetryki.FormattingEnabled = true;
+            this.cbMetryki.Location = new System.Drawing.Point(286, 151);
+            this.cbMetryki.Name = "cbMetryki";
+            this.cbMetryki.Size = new System.Drawing.Size(87, 21);
+            this.cbMetryki.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 340);
+            this.Controls.Add(this.cbMetryki);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLicz);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nrcSasiedzi);
@@ -176,6 +197,8 @@
         private System.Windows.Forms.NumericUpDown nrcSasiedzi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLicz;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbMetryki;
     }
 }
 

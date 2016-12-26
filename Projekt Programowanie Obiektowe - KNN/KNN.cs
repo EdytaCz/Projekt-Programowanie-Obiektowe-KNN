@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
+    public delegate double Metryka(ObiektDecyzyjny treningowy, ObiektDecyzyjny testowy);
     class KNN
     {
         public int[][] daneTestoweWejściowe { get; set; }
