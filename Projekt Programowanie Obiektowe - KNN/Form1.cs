@@ -77,6 +77,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.LiczMetryki(metryka);
             knn.LiczDzielISortuj();
             knn.SprawdźK();
+            knn.KlasyfikujObiekty();
         }
         private void Form1_Load(object sender, EventArgs e)
         {

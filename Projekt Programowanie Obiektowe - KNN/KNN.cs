@@ -86,5 +86,12 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 IlośćSąsiadów = maxK;
             }
         }
+        public void KlasyfikujObiekty()
+        {
+            for (int i = 0; i < daneTestowe.Count; i++)
+            {
+                daneTestowe[i].Klasyfikuj(IlośćSąsiadów);
+            }
+        }
     }
 }

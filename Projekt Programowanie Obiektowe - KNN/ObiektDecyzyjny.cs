@@ -19,7 +19,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         public List<WartośćMetrykiDlaObiektu> metryki = new List<WartośćMetrykiDlaObiektu>();
 
         public Dictionary<int, List<WartośćMetrykiDlaObiektu>> klasy = new Dictionary<int, List<WartośćMetrykiDlaObiektu>>();
-
+        public Dictionary<int, double> SumyWartościSąsiadów = new Dictionary<int, double>();
         public void DzielISortuj()
         {
             foreach (var metryka in metryki)
@@ -40,6 +40,18 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 klasy[klucz].Sort((x, y) => x.WartośćMetryki.CompareTo(y.WartośćMetryki));
             }
         }
+        public void Klasyfikuj(int ilośćSąsiadów)
+        {
+            foreach (var klasa in klasy)
+            {
+                double suma = 0;
+                for (int i = 0; i < ilośćSąsiadów; i++)
+                {
+                    suma += klasa.Value[i].WartośćMetryki;
+                }
+                SumyWartościSąsiadów.Add(klasa.Key, suma);
+            }
 
+        }
     }
 }
