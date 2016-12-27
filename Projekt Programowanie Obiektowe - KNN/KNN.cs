@@ -61,5 +61,12 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 }
             }
         }
+        public void LiczDzielISortuj()
+        {
+            for (int i = 0; i < daneTestowe.Count; i++)
+            {
+                daneTestowe[i].DzielISortuj();
+            }
+        }
     }
 }
