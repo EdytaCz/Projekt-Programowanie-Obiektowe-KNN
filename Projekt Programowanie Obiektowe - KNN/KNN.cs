@@ -68,5 +68,23 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 daneTestowe[i].DzielISortuj();
             }
         }
+        public void SprawdźK()
+        {
+            var maxK = daneTestowe[0].klasy.FirstOrDefault().Value.Count();
+            foreach (var obiektDecyzyjny in daneTestowe)
+            {
+                foreach (var klasa in obiektDecyzyjny.klasy)
+                {
+                    if (maxK > klasa.Value.Count)
+                    {
+                        maxK = klasa.Value.Count;
+                    }
+                }
+            }
+            if (IlośćSąsiadów > maxK)
+            {
+                IlośćSąsiadów = maxK;
+            }
+        }
     }
 }

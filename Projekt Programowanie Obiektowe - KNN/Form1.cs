@@ -76,7 +76,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo) cbMetryki.SelectedItem);
             knn.LiczMetryki(metryka);
             knn.LiczDzielISortuj();
-
+            knn.SprawdźK();
         }
         private void Form1_Load(object sender, EventArgs e)
         {

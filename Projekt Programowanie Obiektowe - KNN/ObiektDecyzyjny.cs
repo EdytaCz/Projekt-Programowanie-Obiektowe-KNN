@@ -40,5 +40,6 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 klasy[klucz].Sort((x, y) => x.WartośćMetryki.CompareTo(y.WartośćMetryki));
             }
         }
+
     }
 }
