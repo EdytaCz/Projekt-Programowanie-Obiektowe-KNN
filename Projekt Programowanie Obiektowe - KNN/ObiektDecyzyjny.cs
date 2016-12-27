@@ -20,6 +20,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
 
         public Dictionary<int, List<WartośćMetrykiDlaObiektu>> klasy = new Dictionary<int, List<WartośćMetrykiDlaObiektu>>();
         public Dictionary<int, double> SumyWartościSąsiadów = new Dictionary<int, double>();
+        public int? SklasyfikowanyDoKlasy { get; set; }
         public void DzielISortuj()
         {
             foreach (var metryka in metryki)
@@ -50,6 +51,28 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                     suma += klasa.Value[i].WartośćMetryki;
                 }
                 SumyWartościSąsiadów.Add(klasa.Key, suma);
+            }
+            PorównajKlasyfikacje();
+        }
+        private void PorównajKlasyfikacje()
+        {
+            int najmniejsza = 0;
+
+            bool czyŁapie = !SumyWartościSąsiadów.Values.All(x => x.Equals(SumyWartościSąsiadów.Values.FirstOrDefault()));
+
+            if (czyŁapie)
+            {
+                foreach (var suma in SumyWartościSąsiadów)
+                {
+                    foreach (var suma2 in SumyWartościSąsiadów)
+                    {
+                        if (suma.Value < suma2.Value)
+                        {
+                            najmniejsza = suma.Key;
+                        }
+                    }
+                }
+                SklasyfikowanyDoKlasy = najmniejsza;
             }
 
         }
