@@ -78,6 +78,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.LiczDzielISortuj();
             knn.SprawdźK();
             knn.KlasyfikujObiekty();
+            knn.LiczMacierzPredykcji();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
