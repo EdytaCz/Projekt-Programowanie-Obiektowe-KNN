@@ -50,5 +50,34 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             }
             return MaxWynik.Max();
         }
+        public static double Pearson(ObiektDecyzyjny treningowy, ObiektDecyzyjny testowy)
+        {
+            double testoweSrednia = 0;
+            double treningoweSrednia = 0;
+            double mianownikLewa = 0;
+            double mianownikPrawa = 0;
+            double r = 0;
+            for (int i = 0; i < testowy.atrybuty.Count; i++)
+            {
+                testoweSrednia += testowy.atrybuty[i];
+                treningoweSrednia += treningowy.atrybuty[i];
+            }
+            testoweSrednia = testoweSrednia / testowy.atrybuty.Count;
+            treningoweSrednia = treningoweSrednia / testowy.atrybuty.Count;
+
+            for (int i = 0; i < testowy.atrybuty.Count; i++)
+            {
+                mianownikLewa += Math.Pow(testowy.atrybuty[i] - testoweSrednia, 2);
+                mianownikPrawa += Math.Pow(treningowy.atrybuty[i] - treningoweSrednia, 2);
+            }
+            mianownikLewa = mianownikLewa / testowy.atrybuty.Count;
+            mianownikPrawa = mianownikPrawa / testowy.atrybuty.Count;
+            for (int i = 0; i < testowy.atrybuty.Count; i++)
+            {
+                r += (testowy.atrybuty[i] - testoweSrednia) / Math.Sqrt(mianownikLewa) * ((treningowy.atrybuty[i] - treningoweSrednia) / Math.Sqrt(mianownikPrawa));
+            }
+            r = r / testowy.atrybuty.Count;
+            return 1 - Math.Abs(r);
+        }
     }
 }
