@@ -9,11 +9,12 @@ namespace Projekt_Programowanie_Obiektowe___KNN
     public class MacierzPredykcji
     {
         public Dictionary<int, List<int?>> Dane = new Dictionary<int, List<int?>>();
+
         public Dictionary<int, double> Trafności = new Dictionary<int, double>();
         public Dictionary<int, double> Pokrycia = new Dictionary<int, double>();
-
         public Dictionary<int, double> StosunekiPrawdziwychPozytywnych = new Dictionary<int, double>();
-
+        public double TrafnośćGlobalna { get; set; }
+        public double PokrycieGlobalne { get; set; }
         public void LiczTrafnościAcc()
         {
             double trafność;
@@ -65,6 +66,29 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 StosunekiPrawdziwychPozytywnych.Add(dana.Key, stosunek);
             }
         }
+        public void LiczTrafnoscGlobalna()
+        {
 
+            double globalnaLicznik = 0;
+            double globalnaMianownik = 0;
+            foreach (var dana in Dane)
+            {
+                globalnaLicznik += dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
+                globalnaMianownik += dana.Value.Count(x => x.HasValue);
+            }
+            TrafnośćGlobalna = globalnaLicznik / globalnaMianownik; ;
+        }
+
+        public void LiczPokrycieGlobalne()
+        {
+            double globalnaLicznik = 0;
+            double globalnaMianownik = 0;
+            foreach (var dana in Dane)
+            {
+                globalnaLicznik += dana.Value.Count(x => x.HasValue);
+                globalnaMianownik += dana.Value.Count;
+            }
+            PokrycieGlobalne = globalnaLicznik / globalnaMianownik;
+        }
     }
 }

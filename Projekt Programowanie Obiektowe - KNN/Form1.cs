@@ -82,6 +82,8 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.macierzPredykcji.LiczTrafnościAcc();
             knn.macierzPredykcji.LiczPokryciaCov();
             knn.macierzPredykcji.LiczStosunekTPR();
+            knn.macierzPredykcji.LiczTrafnoscGlobalna();
+            knn.macierzPredykcji.LiczPokrycieGlobalne();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
