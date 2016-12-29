@@ -8,11 +8,13 @@ namespace Projekt_Programowanie_Obiektowe___KNN
 {
     public class MacierzPredykcji
     {
+        public Dictionary<int, List<int?>> Dane = new Dictionary<int, List<int?>>();
         public Dictionary<int, double> Trafności = new Dictionary<int, double>();
         public Dictionary<int, double> Pokrycia = new Dictionary<int, double>();
-        public Dictionary<int, List<int?>> Dane = new Dictionary<int, List<int?>>();
 
-        public void LiczTrafności()
+        public Dictionary<int, double> StosunekiPrawdziwychPozytywnych = new Dictionary<int, double>();
+
+        public void LiczTrafnościAcc()
         {
             double trafność;
             double trafnośćLicznik;
@@ -26,7 +28,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             }
         }
 
-        public void LiczPokrycia()
+        public void LiczPokryciaCov()
         {
             double pokrycie;
             double pokrycieLicznik;
@@ -41,6 +43,26 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 }
                 pokrycie = pokrycieLicznik / pokrycieMianownik;
                 Pokrycia.Add(dana.Key, pokrycie);
+            }
+        }
+        public void LiczStosunekTPR()
+        {
+            double stosunek;
+            double stosunekLicznik;
+            double stosunekMianownik;
+            foreach (var dana in Dane)
+            {
+                stosunekLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
+                stosunekMianownik = stosunekLicznik;
+                foreach (var dana2 in Dane)
+                {
+                    if (dana2.Key != dana.Key)
+                    {
+                        stosunekMianownik += dana2.Value.Count(x => x.HasValue && x.Value == dana.Key);
+                    }
+                }
+                stosunek = stosunekLicznik / stosunekMianownik;
+                StosunekiPrawdziwychPozytywnych.Add(dana.Key, stosunek);
             }
         }
 

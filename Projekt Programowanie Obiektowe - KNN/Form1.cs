@@ -79,8 +79,9 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.SprawdźK();
             knn.KlasyfikujObiekty();
             knn.LiczMacierzPredykcji();
-            knn.macierzPredykcji.LiczTrafności();
-            knn.macierzPredykcji.LiczPokrycia();
+            knn.macierzPredykcji.LiczTrafnościAcc();
+            knn.macierzPredykcji.LiczPokryciaCov();
+            knn.macierzPredykcji.LiczStosunekTPR();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
