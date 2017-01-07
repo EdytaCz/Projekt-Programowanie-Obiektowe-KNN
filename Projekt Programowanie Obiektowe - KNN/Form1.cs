@@ -73,7 +73,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.IlośćSąsiadów = Convert.ToInt16(nrcSasiedzi.Value);
             knn.daneTreningowe = knn.StwórzListęObiektów(knn.daneTreningoweWejściowe);
             knn.daneTestowe = knn.StwórzListęObiektów(knn.daneTestoweWejściowe);
-            Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo) cbMetryki.SelectedItem);
+            Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo)cbMetryki.SelectedItem);
             knn.LiczMetryki(metryka);
             knn.LiczDzielISortuj();
             knn.SprawdźK();
@@ -84,6 +84,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.macierzPredykcji.LiczStosunekTPR();
             knn.macierzPredykcji.LiczTrafnoscGlobalna();
             knn.macierzPredykcji.LiczPokrycieGlobalne();
+            tbWyniki.Text = knn.macierzPredykcji.WypiszWyniki();
         }
         private void Form1_Load(object sender, EventArgs e)
         {

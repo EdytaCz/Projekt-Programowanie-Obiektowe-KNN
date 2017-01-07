@@ -45,36 +45,39 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbWyniki = new System.Windows.Forms.RichTextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbSciezkaTrening
             // 
             this.tbSciezkaTrening.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbSciezkaTrening.Location = new System.Drawing.Point(6, 29);
+            this.tbSciezkaTrening.Location = new System.Drawing.Point(6, 19);
             this.tbSciezkaTrening.Name = "tbSciezkaTrening";
             this.tbSciezkaTrening.ReadOnly = true;
-            this.tbSciezkaTrening.Size = new System.Drawing.Size(278, 20);
+            this.tbSciezkaTrening.Size = new System.Drawing.Size(287, 20);
             this.tbSciezkaTrening.TabIndex = 0;
             // 
             // tbSciezkaTest
             // 
             this.tbSciezkaTest.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbSciezkaTest.Location = new System.Drawing.Point(6, 77);
+            this.tbSciezkaTest.Location = new System.Drawing.Point(6, 67);
             this.tbSciezkaTest.Name = "tbSciezkaTest";
             this.tbSciezkaTest.ReadOnly = true;
-            this.tbSciezkaTest.Size = new System.Drawing.Size(278, 20);
+            this.tbSciezkaTest.Size = new System.Drawing.Size(287, 20);
             this.tbSciezkaTest.TabIndex = 1;
             // 
             // btnWczytajTreningowe
             // 
-            this.btnWczytajTreningowe.Location = new System.Drawing.Point(290, 17);
+            this.btnWczytajTreningowe.Location = new System.Drawing.Point(299, 12);
             this.btnWczytajTreningowe.Name = "btnWczytajTreningowe";
-            this.btnWczytajTreningowe.Size = new System.Drawing.Size(115, 42);
+            this.btnWczytajTreningowe.Size = new System.Drawing.Size(155, 32);
             this.btnWczytajTreningowe.TabIndex = 2;
             this.btnWczytajTreningowe.Text = "Wczytaj Dane Treningowe";
             this.btnWczytajTreningowe.UseVisualStyleBackColor = true;
@@ -82,9 +85,9 @@
             // 
             // btnWczytajTestowe
             // 
-            this.btnWczytajTestowe.Location = new System.Drawing.Point(290, 65);
+            this.btnWczytajTestowe.Location = new System.Drawing.Point(299, 60);
             this.btnWczytajTestowe.Name = "btnWczytajTestowe";
-            this.btnWczytajTestowe.Size = new System.Drawing.Size(115, 42);
+            this.btnWczytajTestowe.Size = new System.Drawing.Size(155, 32);
             this.btnWczytajTestowe.TabIndex = 3;
             this.btnWczytajTestowe.Text = "Wczytaj Dane Testowe";
             this.btnWczytajTestowe.UseVisualStyleBackColor = true;
@@ -93,20 +96,20 @@
             // tbDaneTreningowe
             // 
             this.tbDaneTreningowe.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbDaneTreningowe.Location = new System.Drawing.Point(6, 19);
+            this.tbDaneTreningowe.Location = new System.Drawing.Point(6, 18);
             this.tbDaneTreningowe.Name = "tbDaneTreningowe";
             this.tbDaneTreningowe.ReadOnly = true;
-            this.tbDaneTreningowe.Size = new System.Drawing.Size(109, 134);
+            this.tbDaneTreningowe.Size = new System.Drawing.Size(94, 107);
             this.tbDaneTreningowe.TabIndex = 4;
             this.tbDaneTreningowe.Text = "";
             // 
             // tbDaneTestowe
             // 
             this.tbDaneTestowe.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbDaneTestowe.Location = new System.Drawing.Point(6, 18);
+            this.tbDaneTestowe.Location = new System.Drawing.Point(6, 17);
             this.tbDaneTestowe.Name = "tbDaneTestowe";
             this.tbDaneTestowe.ReadOnly = true;
-            this.tbDaneTestowe.Size = new System.Drawing.Size(109, 134);
+            this.tbDaneTestowe.Size = new System.Drawing.Size(94, 108);
             this.tbDaneTestowe.TabIndex = 5;
             this.tbDaneTestowe.Text = "";
             // 
@@ -123,7 +126,7 @@
             0,
             0});
             this.nrcSasiedzi.Name = "nrcSasiedzi";
-            this.nrcSasiedzi.Size = new System.Drawing.Size(56, 20);
+            this.nrcSasiedzi.Size = new System.Drawing.Size(57, 20);
             this.nrcSasiedzi.TabIndex = 6;
             this.nrcSasiedzi.Value = new decimal(new int[] {
             1,
@@ -142,9 +145,9 @@
             // 
             // btnLicz
             // 
-            this.btnLicz.Location = new System.Drawing.Point(42, 129);
+            this.btnLicz.Location = new System.Drawing.Point(9, 77);
             this.btnLicz.Name = "btnLicz";
-            this.btnLicz.Size = new System.Drawing.Size(75, 23);
+            this.btnLicz.Size = new System.Drawing.Size(203, 23);
             this.btnLicz.TabIndex = 8;
             this.btnLicz.Text = "Licz";
             this.btnLicz.UseVisualStyleBackColor = true;
@@ -153,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 73);
+            this.label2.Location = new System.Drawing.Point(37, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 9;
@@ -162,9 +165,9 @@
             // cbMetryki
             // 
             this.cbMetryki.FormattingEnabled = true;
-            this.cbMetryki.Location = new System.Drawing.Point(57, 70);
+            this.cbMetryki.Location = new System.Drawing.Point(88, 46);
             this.cbMetryki.Name = "cbMetryki";
-            this.cbMetryki.Size = new System.Drawing.Size(87, 21);
+            this.cbMetryki.Size = new System.Drawing.Size(121, 21);
             this.cbMetryki.TabIndex = 10;
             // 
             // groupBox1
@@ -175,7 +178,7 @@
             this.groupBox1.Controls.Add(this.btnWczytajTestowe);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(414, 115);
+            this.groupBox1.Size = new System.Drawing.Size(460, 99);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wczytywanie danych";
@@ -183,9 +186,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tbDaneTreningowe);
-            this.groupBox2.Location = new System.Drawing.Point(12, 133);
+            this.groupBox2.Location = new System.Drawing.Point(478, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(121, 158);
+            this.groupBox2.Size = new System.Drawing.Size(106, 131);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dane treningowe";
@@ -193,9 +196,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tbDaneTestowe);
-            this.groupBox3.Location = new System.Drawing.Point(146, 133);
+            this.groupBox3.Location = new System.Drawing.Point(590, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(121, 158);
+            this.groupBox3.Size = new System.Drawing.Size(106, 131);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dane testowe";
@@ -207,22 +210,41 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbMetryki);
             this.groupBox4.Controls.Add(this.btnLicz);
-            this.groupBox4.Location = new System.Drawing.Point(273, 133);
+            this.groupBox4.Location = new System.Drawing.Point(478, 151);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(153, 158);
+            this.groupBox4.Size = new System.Drawing.Size(218, 108);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Ustawienia";
+            // 
+            // tbWyniki
+            // 
+            this.tbWyniki.Location = new System.Drawing.Point(6, 17);
+            this.tbWyniki.Name = "tbWyniki";
+            this.tbWyniki.Size = new System.Drawing.Size(448, 119);
+            this.tbWyniki.TabIndex = 15;
+            this.tbWyniki.Text = "";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.tbWyniki);
+            this.groupBox5.Location = new System.Drawing.Point(12, 117);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(460, 142);
+            this.groupBox5.TabIndex = 16;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Raport z klasyfikacji";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 304);
+            this.ClientSize = new System.Drawing.Size(702, 286);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -233,6 +255,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -256,6 +279,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RichTextBox tbWyniki;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 

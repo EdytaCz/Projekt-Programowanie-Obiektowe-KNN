@@ -74,7 +74,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 }
                 SklasyfikowanyDoKlasy = najmniejsza;
             }
-
         }
+
     }
 }

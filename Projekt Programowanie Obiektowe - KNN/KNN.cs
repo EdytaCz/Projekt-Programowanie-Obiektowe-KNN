@@ -93,9 +93,10 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 daneTestowe[i].Klasyfikuj(IlośćSąsiadów);
             }
         }
+        Dictionary<int, List<int?>> SklasyfikowanePoprawnie = new Dictionary<int, List<int?>>();
         public void LiczMacierzPredykcji()
         {
-            Dictionary<int, List<int?>> SklasyfikowanePoprawnie = new Dictionary<int, List<int?>>();
+
             foreach (var obiekt in daneTestowe)
             {
                 bool czyKluczJużIstnieje = !SklasyfikowanePoprawnie.ContainsKey(obiekt.klasaDecyzyjna);

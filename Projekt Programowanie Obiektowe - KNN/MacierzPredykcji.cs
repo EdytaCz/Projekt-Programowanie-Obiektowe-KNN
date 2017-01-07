@@ -24,6 +24,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             {
                 trafnośćLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
                 trafnośćMianownik = dana.Value.Count(x => x.HasValue);
+
                 trafność = trafnośćLicznik / trafnośćMianownik;
                 Trafności[dana.Key] = trafność;
             }
@@ -38,12 +39,10 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             {
                 pokrycieLicznik = 0;
                 pokrycieMianownik = dana.Value.Count;
-                foreach (var dana2 in Dane)
-                {
-                    pokrycieLicznik += dana2.Value.Count(x => x.HasValue && x.Value == dana.Key);
-                }
+                pokrycieLicznik += dana.Value.Count(x => x.HasValue);
                 pokrycie = pokrycieLicznik / pokrycieMianownik;
-                Pokrycia.Add(dana.Key, pokrycie);
+                //Pokrycia.Add(dana.Key, pokrycie);
+                Pokrycia[dana.Key] = pokrycie;
             }
         }
         public void LiczStosunekTPR()
@@ -63,7 +62,8 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                     }
                 }
                 stosunek = stosunekLicznik / stosunekMianownik;
-                StosunekiPrawdziwychPozytywnych.Add(dana.Key, stosunek);
+                // StosunekiPrawdziwychPozytywnych.Add(dana.Key, stosunek);
+                StosunekiPrawdziwychPozytywnych[dana.Key] = stosunek;
             }
         }
         public void LiczTrafnoscGlobalna()
@@ -89,6 +89,41 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 globalnaMianownik += dana.Value.Count;
             }
             PokrycieGlobalne = globalnaLicznik / globalnaMianownik;
+        }
+
+        public string WypiszWyniki()
+        {
+            string wynik = "\t\t";
+            var toShow = Dane.OrderBy(x => x.Key);
+            foreach (var dana in toShow)
+            {
+                wynik += "\t" +
+                dana.Key.ToString();
+            }
+            wynik += "\tLiczba obiektów";
+            wynik += "\tAccuracy";
+            wynik += "\tCoverage";
+            foreach (var row in toShow)
+            {
+                wynik += "\n";
+                wynik += "\t\t" + row.Key + "\t";
+                foreach (var dana in toShow)
+                {
+                    wynik += dana.Value.Count(x => x.HasValue && x.Value == row.Key) + "\t";
+
+                }
+                wynik += "\t" + Dane.Values.Count;
+                wynik += "\t" + Trafności.FirstOrDefault(x => x.Key == row.Key).Value;
+                wynik += "\t" + Pokrycia.FirstOrDefault(x => x.Key == row.Key).Value;
+            }
+            wynik += "\nTrue Positive Rate\t\t";
+            foreach (var stosunek in StosunekiPrawdziwychPozytywnych)
+            {
+                wynik += stosunek.Value + "\t";
+            }
+            wynik += "\nGlobal Cov\t" + PokrycieGlobalne;
+            wynik += "\nGlobal Acc\t" + TrafnośćGlobalna;
+            return wynik;
         }
     }
 }
