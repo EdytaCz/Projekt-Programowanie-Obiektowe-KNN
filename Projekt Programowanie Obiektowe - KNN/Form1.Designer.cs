@@ -36,7 +36,7 @@
             this.tbDaneTestowe = new System.Windows.Forms.RichTextBox();
             this.ofdTrening = new System.Windows.Forms.OpenFileDialog();
             this.ofdTest = new System.Windows.Forms.OpenFileDialog();
-            this.nrcSasiedzi = new System.Windows.Forms.NumericUpDown();
+            this.numericSasiedzi = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLicz = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbWyniki = new System.Windows.Forms.RichTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSasiedzi)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,18 +117,18 @@
             // 
             this.ofdTest.FileName = "openFileDialog2";
             // 
-            // nrcSasiedzi
+            // numericSasiedzi
             // 
-            this.nrcSasiedzi.Location = new System.Drawing.Point(88, 20);
-            this.nrcSasiedzi.Minimum = new decimal(new int[] {
+            this.numericSasiedzi.Location = new System.Drawing.Point(88, 20);
+            this.numericSasiedzi.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nrcSasiedzi.Name = "nrcSasiedzi";
-            this.nrcSasiedzi.Size = new System.Drawing.Size(57, 20);
-            this.nrcSasiedzi.TabIndex = 6;
-            this.nrcSasiedzi.Value = new decimal(new int[] {
+            this.numericSasiedzi.Name = "numericSasiedzi";
+            this.numericSasiedzi.Size = new System.Drawing.Size(57, 20);
+            this.numericSasiedzi.TabIndex = 6;
+            this.numericSasiedzi.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -145,6 +145,7 @@
             // 
             // btnLicz
             // 
+            this.btnLicz.Enabled = false;
             this.btnLicz.Location = new System.Drawing.Point(9, 77);
             this.btnLicz.Name = "btnLicz";
             this.btnLicz.Size = new System.Drawing.Size(203, 23);
@@ -164,11 +165,13 @@
             // 
             // cbMetryki
             // 
+            this.cbMetryki.BackColor = System.Drawing.SystemColors.Window;
             this.cbMetryki.FormattingEnabled = true;
             this.cbMetryki.Location = new System.Drawing.Point(88, 46);
             this.cbMetryki.Name = "cbMetryki";
             this.cbMetryki.Size = new System.Drawing.Size(121, 21);
             this.cbMetryki.TabIndex = 10;
+            this.cbMetryki.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZablokowanieComboboxa);
             // 
             // groupBox1
             // 
@@ -206,7 +209,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.nrcSasiedzi);
+            this.groupBox4.Controls.Add(this.numericSasiedzi);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbMetryki);
             this.groupBox4.Controls.Add(this.btnLicz);
@@ -219,8 +222,10 @@
             // 
             // tbWyniki
             // 
+            this.tbWyniki.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbWyniki.Location = new System.Drawing.Point(6, 17);
             this.tbWyniki.Name = "tbWyniki";
+            this.tbWyniki.ReadOnly = true;
             this.tbWyniki.Size = new System.Drawing.Size(448, 119);
             this.tbWyniki.TabIndex = 15;
             this.tbWyniki.Text = "";
@@ -239,16 +244,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 286);
+            this.ClientSize = new System.Drawing.Size(707, 272);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nrcSasiedzi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSasiedzi)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -270,7 +276,7 @@
         private System.Windows.Forms.RichTextBox tbDaneTestowe;
         private System.Windows.Forms.OpenFileDialog ofdTrening;
         private System.Windows.Forms.OpenFileDialog ofdTest;
-        private System.Windows.Forms.NumericUpDown nrcSasiedzi;
+        private System.Windows.Forms.NumericUpDown numericSasiedzi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLicz;
         private System.Windows.Forms.Label label2;

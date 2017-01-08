@@ -62,7 +62,6 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                     }
                 }
                 stosunek = stosunekLicznik / stosunekMianownik;
-                // StosunekiPrawdziwychPozytywnych.Add(dana.Key, stosunek);
                 StosunekiPrawdziwychPozytywnych[dana.Key] = stosunek;
             }
         }
@@ -98,7 +97,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             foreach (var dana in toShow)
             {
                 wynik += "\t" +
-                dana.Key.ToString();
+                dana.Key;
             }
             wynik += "\tLiczba obiektów";
             wynik += "\tAccuracy";

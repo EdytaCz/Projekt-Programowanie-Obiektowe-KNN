@@ -50,7 +50,8 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 {
                     suma += klasa.Value[i].WartośćMetryki;
                 }
-                SumyWartościSąsiadów.Add(klasa.Key, suma);
+              SumyWartościSąsiadów.Add(klasa.Key, suma);
+             //   SumyWartościSąsiadów[klasa.Key] = suma;
             }
             PorównajKlasyfikacje();
         }

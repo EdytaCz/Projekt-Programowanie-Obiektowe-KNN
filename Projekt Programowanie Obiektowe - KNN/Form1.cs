@@ -13,12 +13,12 @@ namespace Projekt_Programowanie_Obiektowe___KNN
 {
     public partial class Form1 : Form
     {
-
+        public KNN knn = new KNN();
         public Form1()
         {
             InitializeComponent();
         }
-        KNN knn = new KNN();
+
         public int[][] WczytywanieZpliku(ref OpenFileDialog ofd)
         {
             int[][] daneZPliku = new int[][] { };
@@ -29,8 +29,6 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             }
             if (wynik == DialogResult.OK)
             {
-
-                //tbScieszka.Text = ofd.FileName;
                 string trescPliku = System.IO.File.ReadAllText(ofd.FileName);
 
                 string[] poziomy = trescPliku.Split('\n');
@@ -48,7 +46,6 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                     }
                 }
             }
-
             return daneZPliku;
         }
 
@@ -58,6 +55,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             int[][] treningowe = knn.daneTreningoweWejściowe;
             tbSciezkaTrening.Text = ofdTrening.FileName;
             tbDaneTreningowe.Text = knn.WyświetlenieSystemów(ref treningowe);
+            OdblokujLiczenie();
         }
 
         private void btnWczytajTestowe_Click(object sender, EventArgs e)
@@ -66,11 +64,16 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             int[][] testowe = knn.daneTestoweWejściowe;
             tbSciezkaTest.Text = ofdTest.FileName;
             tbDaneTestowe.Text = knn.WyświetlenieSystemów(ref testowe);
+            OdblokujLiczenie();
+        }
+
+        private void OdblokujLiczenie()
+        {
+            btnLicz.Enabled = tbDaneTreningowe.Text != "" && tbDaneTestowe.Text != "";
         }
         private void btnLicz_Click(object sender, EventArgs e)
         {
-            //do zrobienia: liczenie zablokowane przed wybraniem potrzebnych parametrów
-            knn.IlośćSąsiadów = Convert.ToInt16(nrcSasiedzi.Value);
+            knn.IlośćSąsiadów = Convert.ToInt16(numericSasiedzi.Value);
             knn.daneTreningowe = knn.StwórzListęObiektów(knn.daneTreningoweWejściowe);
             knn.daneTestowe = knn.StwórzListęObiektów(knn.daneTestoweWejściowe);
             Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo)cbMetryki.SelectedItem);
@@ -86,11 +89,17 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             knn.macierzPredykcji.LiczPokrycieGlobalne();
             tbWyniki.Text = knn.macierzPredykcji.WypiszWyniki();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             cbMetryki.DataSource = typeof(Metryki).GetMethods().Where(
                 metoda => metoda.ReturnType == typeof(double)).ToList();
             cbMetryki.DisplayMember = "Name";
+        }
+
+        private void ZablokowanieComboboxa(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

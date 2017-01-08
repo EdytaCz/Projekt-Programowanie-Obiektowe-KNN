@@ -96,7 +96,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         Dictionary<int, List<int?>> SklasyfikowanePoprawnie = new Dictionary<int, List<int?>>();
         public void LiczMacierzPredykcji()
         {
-
+            SklasyfikowanePoprawnie= new Dictionary<int, List<int?>>();
             foreach (var obiekt in daneTestowe)
             {
                 bool czyKluczJużIstnieje = !SklasyfikowanePoprawnie.ContainsKey(obiekt.klasaDecyzyjna);
