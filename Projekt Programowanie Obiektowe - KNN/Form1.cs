@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
     public partial class Form1 : Form
     {
-        public KNN knn = new KNN();
+        public Knn Knn = new Knn();
         public Form1()
         {
             InitializeComponent();
@@ -51,43 +46,66 @@ namespace Projekt_Programowanie_Obiektowe___KNN
 
         private void btnWczytajTreningowe_Click(object sender, EventArgs e)
         {
-            knn.daneTreningoweWejściowe = WczytywanieZpliku(ref ofdTrening);
-            int[][] treningowe = knn.daneTreningoweWejściowe;
+            btnLicz.Enabled = false;
+            numericSasiedzi.Enabled = false;
+
+            Knn.DaneTreningoweWejściowe = WczytywanieZpliku(ref ofdTrening);
+            var treningowe = Knn.DaneTreningoweWejściowe;
             tbSciezkaTrening.Text = ofdTrening.FileName;
-            tbDaneTreningowe.Text = knn.WyświetlenieSystemów(ref treningowe);
-            OdblokujLiczenie();
+            tbDaneTreningowe.Text = Knn.WyświetlenieSystemów(ref treningowe);
+            if (treningowe != null)
+            {
+                var możliweK = new Dictionary<int, int>();
+                foreach (var wiersz in treningowe)
+                {
+                    if (!możliweK.ContainsKey(wiersz.LastOrDefault()))
+                    {
+                        możliweK.Add(wiersz.LastOrDefault(), 1);
+                    }
+
+                    else
+                    {
+                        możliweK[wiersz.LastOrDefault()]++;
+                    }
+                }
+                numericSasiedzi.Maximum = możliweK.Aggregate((l, r) => l.Value > r.Value ? l : r).Value;
+                numericSasiedzi.Enabled = true;
+                OdblokujLiczenie();
+            }
+
         }
 
         private void btnWczytajTestowe_Click(object sender, EventArgs e)
         {
-            knn.daneTestoweWejściowe = WczytywanieZpliku(ref ofdTest);
-            int[][] testowe = knn.daneTestoweWejściowe;
+            btnLicz.Enabled = false;
+            Knn.DaneTestoweWejściowe = WczytywanieZpliku(ref ofdTest);
+            var testowe = Knn.DaneTestoweWejściowe;
             tbSciezkaTest.Text = ofdTest.FileName;
-            tbDaneTestowe.Text = knn.WyświetlenieSystemów(ref testowe);
+            tbDaneTestowe.Text = Knn.WyświetlenieSystemów(ref testowe);
             OdblokujLiczenie();
         }
 
         private void OdblokujLiczenie()
         {
-            btnLicz.Enabled = tbDaneTreningowe.Text != "" && tbDaneTestowe.Text != "";
+            btnLicz.Enabled = tbDaneTreningowe.Text != String.Empty && tbDaneTestowe.Text != String.Empty;
         }
         private void btnLicz_Click(object sender, EventArgs e)
         {
-            knn.IlośćSąsiadów = Convert.ToInt16(numericSasiedzi.Value);
-            knn.daneTreningowe = knn.StwórzListęObiektów(knn.daneTreningoweWejściowe);
-            knn.daneTestowe = knn.StwórzListęObiektów(knn.daneTestoweWejściowe);
+            Knn.DaneTestowe = Knn.StwórzListęObiektów(Knn.DaneTestoweWejściowe);
+            Knn.DaneTreningowe = Knn.StwórzListęObiektów(Knn.DaneTreningoweWejściowe);
+            Knn.IlośćSąsiadów = Convert.ToInt16(numericSasiedzi.Value);
+
             Metryka metryka = (Metryka)Delegate.CreateDelegate(typeof(Metryka), (MethodInfo)cbMetryki.SelectedItem);
-            knn.LiczMetryki(metryka);
-            knn.LiczDzielISortuj();
-            knn.SprawdźK();
-            knn.KlasyfikujObiekty();
-            knn.LiczMacierzPredykcji();
-            knn.macierzPredykcji.LiczTrafnościAcc();
-            knn.macierzPredykcji.LiczPokryciaCov();
-            knn.macierzPredykcji.LiczStosunekTPR();
-            knn.macierzPredykcji.LiczTrafnoscGlobalna();
-            knn.macierzPredykcji.LiczPokrycieGlobalne();
-            tbWyniki.Text = knn.macierzPredykcji.WypiszWyniki();
+            Knn.LiczMetryki(metryka);
+            Knn.LiczDzielISortuj();
+            Knn.KlasyfikujObiekty();
+            Knn.LiczMacierzPredykcji();
+            Knn.MacierzPredykcji.LiczTrafnosciAcc();
+            Knn.MacierzPredykcji.LiczPokryciaCov();
+            Knn.MacierzPredykcji.LiczStosunekTpr();
+            Knn.MacierzPredykcji.LiczTrafnoscGlobalna();
+            Knn.MacierzPredykcji.LiczPokrycieGlobalne();
+            tbWyniki.Text = Knn.MacierzPredykcji.WypiszWyniki();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -95,6 +113,8 @@ namespace Projekt_Programowanie_Obiektowe___KNN
             cbMetryki.DataSource = typeof(Metryki).GetMethods().Where(
                 metoda => metoda.ReturnType == typeof(double)).ToList();
             cbMetryki.DisplayMember = "Name";
+            ofdTrening.Filter = "Pliki tekstowe (*.txt)|*.txt";
+            ofdTest.Filter = "Pliki tekstowe (*.txt)|*.txt";
         }
 
         private void ZablokowanieComboboxa(object sender, KeyPressEventArgs e)

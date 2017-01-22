@@ -1,7 +1,6 @@
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\bin\Debug\Projekt Programowanie Obiektowe - KNN.exe.config
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\bin\Debug\Projekt Programowanie Obiektowe - KNN.exe
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\bin\Debug\Projekt Programowanie Obiektowe - KNN.pdb
-E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\obj\Debug\Projekt Programowanie Obiektowe - KNN.csprojResolveAssemblyReference.cache
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\obj\Debug\Projekt_Programowanie_Obiektowe___KNN.Form1.resources
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\obj\Debug\Projekt_Programowanie_Obiektowe___KNN.Properties.Resources.resources
 E:\VISUAL PROJEKTY\Projekt Programowanie Obiektowe - KNN\Projekt Programowanie Obiektowe - KNN\obj\Debug\Projekt Programowanie Obiektowe - KNN.csproj.GenerateResource.Cache

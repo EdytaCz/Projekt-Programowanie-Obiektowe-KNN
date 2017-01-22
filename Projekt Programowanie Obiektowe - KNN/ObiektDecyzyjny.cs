@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
@@ -10,56 +7,56 @@ namespace Projekt_Programowanie_Obiektowe___KNN
     {
         public ObiektDecyzyjny(int[] argumenty)
         {
-            atrybuty = argumenty.Take(argumenty.Length - 1).ToList();
-            klasaDecyzyjna = argumenty.Last();
+            Atrybuty = argumenty.Take(argumenty.Length - 1).ToList();
+            KlasaDecyzyjna = argumenty.Last();
         }
-        public List<int> atrybuty;
-        public int klasaDecyzyjna { get; set; }
+        
+        public List<int> Atrybuty;
+        public int KlasaDecyzyjna { get; set; }
 
-        public List<WartośćMetrykiDlaObiektu> metryki = new List<WartośćMetrykiDlaObiektu>();
+        public List<WartośćMetrykiDlaObiektu> Metryki = new List<WartośćMetrykiDlaObiektu>();
 
-        public Dictionary<int, List<WartośćMetrykiDlaObiektu>> klasy = new Dictionary<int, List<WartośćMetrykiDlaObiektu>>();
+        public Dictionary<int, List<WartośćMetrykiDlaObiektu>> Klasy = new Dictionary<int, List<WartośćMetrykiDlaObiektu>>();
         public Dictionary<int, double> SumyWartościSąsiadów = new Dictionary<int, double>();
         public int? SklasyfikowanyDoKlasy { get; set; }
         public void DzielISortuj()
         {
-            foreach (var metryka in metryki)
+            foreach (var metryka in Metryki)
             {
-                bool czyIstniejeSłownik = klasy.ContainsKey(metryka.Klasa);
+                bool czyIstniejeSłownik = Klasy.ContainsKey(metryka.Klasa);
                 if (!czyIstniejeSłownik)
                 {
-                    klasy.Add(metryka.Klasa, new List<WartośćMetrykiDlaObiektu>());
-                    klasy[metryka.Klasa].Add(metryka);
+                    Klasy.Add(metryka.Klasa, new List<WartośćMetrykiDlaObiektu>());
+                    Klasy[metryka.Klasa].Add(metryka);
                 }
                 else
                 {
-                    klasy[metryka.Klasa].Add(metryka);
+                    Klasy[metryka.Klasa].Add(metryka);
                 }
             }
-            foreach (var klucz in klasy.Keys)
+            foreach (var klucz in Klasy.Keys)
             {
-                klasy[klucz].Sort((x, y) => x.WartośćMetryki.CompareTo(y.WartośćMetryki));
+                Klasy[klucz].Sort((x, y) => x.WartośćMetryki.CompareTo(y.WartośćMetryki));
             }
         }
         public void Klasyfikuj(int ilośćSąsiadów)
         {
-            foreach (var klasa in klasy)
+            foreach (var klasa in Klasy)
             {
                 double suma = 0;
                 for (int i = 0; i < ilośćSąsiadów; i++)
                 {
                     suma += klasa.Value[i].WartośćMetryki;
                 }
-              SumyWartościSąsiadów.Add(klasa.Key, suma);
-             //   SumyWartościSąsiadów[klasa.Key] = suma;
+                SumyWartościSąsiadów[klasa.Key] = suma;
             }
             PorównajKlasyfikacje();
         }
         private void PorównajKlasyfikacje()
         {
-            int najmniejsza = 0;
+            var najmniejsza = 0;
 
-            bool czyŁapie = !SumyWartościSąsiadów.Values.All(x => x.Equals(SumyWartościSąsiadów.Values.FirstOrDefault()));
+            var czyŁapie = !SumyWartościSąsiadów.Values.All(x => x.Equals(SumyWartościSąsiadów.Values.FirstOrDefault()));
 
             if (czyŁapie)
             {

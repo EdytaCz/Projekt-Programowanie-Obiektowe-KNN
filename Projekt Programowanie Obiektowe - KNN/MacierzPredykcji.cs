@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
@@ -10,50 +7,39 @@ namespace Projekt_Programowanie_Obiektowe___KNN
     {
         public Dictionary<int, List<int?>> Dane = new Dictionary<int, List<int?>>();
 
-        public Dictionary<int, double> Trafności = new Dictionary<int, double>();
+        public Dictionary<int, double> Trafnosci = new Dictionary<int, double>();
         public Dictionary<int, double> Pokrycia = new Dictionary<int, double>();
         public Dictionary<int, double> StosunekiPrawdziwychPozytywnych = new Dictionary<int, double>();
-        public double TrafnośćGlobalna { get; set; }
+        public double TrafnoscGlobalna { get; set; }
         public double PokrycieGlobalne { get; set; }
-        public void LiczTrafnościAcc()
+        public void LiczTrafnosciAcc()
         {
-            double trafność;
-            double trafnośćLicznik;
-            double trafnośćMianownik;
             foreach (var dana in Dane)
             {
-                trafnośćLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
-                trafnośćMianownik = dana.Value.Count(x => x.HasValue);
-
-                trafność = trafnośćLicznik / trafnośćMianownik;
-                Trafności[dana.Key] = trafność;
+                double trafnoscLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
+                double trafnoscMianownik = dana.Value.Count(x => x.HasValue);
+                var trafnosc = trafnoscLicznik / trafnoscMianownik;
+                Trafnosci[dana.Key] = trafnosc;
             }
         }
 
         public void LiczPokryciaCov()
         {
-            double pokrycie;
-            double pokrycieLicznik;
-            double pokrycieMianownik;
             foreach (var dana in Dane)
             {
-                pokrycieLicznik = 0;
-                pokrycieMianownik = dana.Value.Count;
+                double pokrycieLicznik = 0;
+                double pokrycieMianownik = dana.Value.Count;
                 pokrycieLicznik += dana.Value.Count(x => x.HasValue);
-                pokrycie = pokrycieLicznik / pokrycieMianownik;
-                //Pokrycia.Add(dana.Key, pokrycie);
+                var pokrycie = pokrycieLicznik / pokrycieMianownik;
                 Pokrycia[dana.Key] = pokrycie;
             }
         }
-        public void LiczStosunekTPR()
+        public void LiczStosunekTpr()
         {
-            double stosunek;
-            double stosunekLicznik;
-            double stosunekMianownik;
             foreach (var dana in Dane)
             {
-                stosunekLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
-                stosunekMianownik = stosunekLicznik;
+                double stosunekLicznik = dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
+                var stosunekMianownik = stosunekLicznik;
                 foreach (var dana2 in Dane)
                 {
                     if (dana2.Key != dana.Key)
@@ -61,13 +47,12 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                         stosunekMianownik += dana2.Value.Count(x => x.HasValue && x.Value == dana.Key);
                     }
                 }
-                stosunek = stosunekLicznik / stosunekMianownik;
+                var stosunek = stosunekLicznik / stosunekMianownik;
                 StosunekiPrawdziwychPozytywnych[dana.Key] = stosunek;
             }
         }
         public void LiczTrafnoscGlobalna()
         {
-
             double globalnaLicznik = 0;
             double globalnaMianownik = 0;
             foreach (var dana in Dane)
@@ -75,7 +60,7 @@ namespace Projekt_Programowanie_Obiektowe___KNN
                 globalnaLicznik += dana.Value.Count(x => x.HasValue && x.Value == dana.Key);
                 globalnaMianownik += dana.Value.Count(x => x.HasValue);
             }
-            TrafnośćGlobalna = globalnaLicznik / globalnaMianownik; ;
+            TrafnoscGlobalna = globalnaLicznik / globalnaMianownik; ;
         }
 
         public void LiczPokrycieGlobalne()
@@ -93,35 +78,35 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         public string WypiszWyniki()
         {
             string wynik = "\t\t";
-            var toShow = Dane.OrderBy(x => x.Key);
-            foreach (var dana in toShow)
+            var doWyswietlenia = Dane.OrderBy(x => x.Key);
+            var tprDoWyswietlenia = StosunekiPrawdziwychPozytywnych.OrderBy(x => x.Key);
+            foreach (var dana in doWyswietlenia)
             {
-                wynik += "\t" +
-                dana.Key;
+                wynik += "\t" + dana.Key;
             }
             wynik += "\tLiczba obiektów";
-            wynik += "\tAccuracy";
-            wynik += "\tCoverage";
-            foreach (var row in toShow)
+            wynik += "\tAcc";
+            wynik += "\tCov";
+            foreach (var wiersz in doWyswietlenia)
             {
                 wynik += "\n";
-                wynik += "\t\t" + row.Key + "\t";
-                foreach (var dana in toShow)
+                wynik += "\t\t" + wiersz.Key + "\t";
+                foreach (var dana in doWyswietlenia)
                 {
-                    wynik += dana.Value.Count(x => x.HasValue && x.Value == row.Key) + "\t";
+                    wynik += $"{wiersz.Value.Count(x => x.HasValue && x.Value == dana.Key):0.#}" + "\t";
 
                 }
                 wynik += "\t" + Dane.Values.Count;
-                wynik += "\t" + Trafności.FirstOrDefault(x => x.Key == row.Key).Value;
-                wynik += "\t" + Pokrycia.FirstOrDefault(x => x.Key == row.Key).Value;
+                wynik += "\t" + $"{Trafnosci.FirstOrDefault(x => x.Key == wiersz.Key).Value:0.#}";
+                wynik += "\t" + $"{Pokrycia.FirstOrDefault(x => x.Key == wiersz.Key).Value:0.#}";
             }
             wynik += "\nTrue Positive Rate\t\t";
-            foreach (var stosunek in StosunekiPrawdziwychPozytywnych)
+            foreach (var stosunek in tprDoWyswietlenia)
             {
-                wynik += stosunek.Value + "\t";
+                wynik += $"{stosunek.Value:0.#}" + "\t";
             }
-            wynik += "\nGlobal Cov\t" + PokrycieGlobalne;
-            wynik += "\nGlobal Acc\t" + TrafnośćGlobalna;
+            wynik += "\nGlobal Cov\t" + $"{PokrycieGlobalne:0.##}";
+            wynik += "\nGlobal Acc\t" + $"{TrafnoscGlobalna:0.##}";
             return wynik;
         }
     }

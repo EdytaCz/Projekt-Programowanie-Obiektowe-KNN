@@ -61,7 +61,7 @@
             this.tbSciezkaTrening.Location = new System.Drawing.Point(6, 19);
             this.tbSciezkaTrening.Name = "tbSciezkaTrening";
             this.tbSciezkaTrening.ReadOnly = true;
-            this.tbSciezkaTrening.Size = new System.Drawing.Size(287, 20);
+            this.tbSciezkaTrening.Size = new System.Drawing.Size(275, 20);
             this.tbSciezkaTrening.TabIndex = 0;
             // 
             // tbSciezkaTest
@@ -70,12 +70,12 @@
             this.tbSciezkaTest.Location = new System.Drawing.Point(6, 67);
             this.tbSciezkaTest.Name = "tbSciezkaTest";
             this.tbSciezkaTest.ReadOnly = true;
-            this.tbSciezkaTest.Size = new System.Drawing.Size(287, 20);
+            this.tbSciezkaTest.Size = new System.Drawing.Size(275, 20);
             this.tbSciezkaTest.TabIndex = 1;
             // 
             // btnWczytajTreningowe
             // 
-            this.btnWczytajTreningowe.Location = new System.Drawing.Point(299, 12);
+            this.btnWczytajTreningowe.Location = new System.Drawing.Point(287, 12);
             this.btnWczytajTreningowe.Name = "btnWczytajTreningowe";
             this.btnWczytajTreningowe.Size = new System.Drawing.Size(155, 32);
             this.btnWczytajTreningowe.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             // btnWczytajTestowe
             // 
-            this.btnWczytajTestowe.Location = new System.Drawing.Point(299, 60);
+            this.btnWczytajTestowe.Location = new System.Drawing.Point(287, 60);
             this.btnWczytajTestowe.Name = "btnWczytajTestowe";
             this.btnWczytajTestowe.Size = new System.Drawing.Size(155, 32);
             this.btnWczytajTestowe.TabIndex = 3;
@@ -119,6 +119,7 @@
             // 
             // numericSasiedzi
             // 
+            this.numericSasiedzi.Enabled = false;
             this.numericSasiedzi.Location = new System.Drawing.Point(88, 20);
             this.numericSasiedzi.Minimum = new decimal(new int[] {
             1,
@@ -181,7 +182,7 @@
             this.groupBox1.Controls.Add(this.btnWczytajTestowe);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(460, 99);
+            this.groupBox1.Size = new System.Drawing.Size(448, 99);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wczytywanie danych";
@@ -189,7 +190,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tbDaneTreningowe);
-            this.groupBox2.Location = new System.Drawing.Point(478, 12);
+            this.groupBox2.Location = new System.Drawing.Point(466, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(106, 131);
             this.groupBox2.TabIndex = 12;
@@ -199,7 +200,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tbDaneTestowe);
-            this.groupBox3.Location = new System.Drawing.Point(590, 12);
+            this.groupBox3.Location = new System.Drawing.Point(578, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(106, 131);
             this.groupBox3.TabIndex = 13;
@@ -213,7 +214,7 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbMetryki);
             this.groupBox4.Controls.Add(this.btnLicz);
-            this.groupBox4.Location = new System.Drawing.Point(478, 151);
+            this.groupBox4.Location = new System.Drawing.Point(466, 151);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(218, 108);
             this.groupBox4.TabIndex = 14;
@@ -226,7 +227,7 @@
             this.tbWyniki.Location = new System.Drawing.Point(6, 17);
             this.tbWyniki.Name = "tbWyniki";
             this.tbWyniki.ReadOnly = true;
-            this.tbWyniki.Size = new System.Drawing.Size(448, 119);
+            this.tbWyniki.Size = new System.Drawing.Size(436, 119);
             this.tbWyniki.TabIndex = 15;
             this.tbWyniki.Text = "";
             // 
@@ -235,7 +236,7 @@
             this.groupBox5.Controls.Add(this.tbWyniki);
             this.groupBox5.Location = new System.Drawing.Point(12, 117);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(460, 142);
+            this.groupBox5.Size = new System.Drawing.Size(448, 142);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Raport z klasyfikacji";
@@ -244,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 272);
+            this.ClientSize = new System.Drawing.Size(697, 272);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -252,7 +253,7 @@
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Klasyfikator k − NN";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericSasiedzi)).EndInit();
             this.groupBox1.ResumeLayout(false);

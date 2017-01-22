@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Projekt_Programowanie_Obiektowe___KNN
 {
     public delegate double Metryka(ObiektDecyzyjny treningowy, ObiektDecyzyjny testowy);
-    public class KNN
+    public class Knn
     {
-        public int[][] daneTestoweWejściowe { get; set; }
-        public int[][] daneTreningoweWejściowe { get; set; }
+        public int[][] DaneTestoweWejściowe { get; set; }
+        public int[][] DaneTreningoweWejściowe { get; set; }
         public int IlośćSąsiadów { get; set; }
 
-        public List<ObiektDecyzyjny> daneTreningowe = new List<ObiektDecyzyjny>();
-        public List<ObiektDecyzyjny> daneTestowe = new List<ObiektDecyzyjny>();
-        public MacierzPredykcji macierzPredykcji = new MacierzPredykcji();
+        public List<ObiektDecyzyjny> DaneTreningowe = new List<ObiektDecyzyjny>();
+        public List<ObiektDecyzyjny> DaneTestowe = new List<ObiektDecyzyjny>();
+        public MacierzPredykcji MacierzPredykcji = new MacierzPredykcji();
         public string WyświetlenieSystemów(ref int[][] daneWejściowe)
         {
             string doWyświetlenia = string.Empty;
@@ -47,15 +43,15 @@ namespace Projekt_Programowanie_Obiektowe___KNN
 
         public void LiczMetryki(Metryka metryka)
         {
-            for (int i = 0; i < daneTestowe.Count; i++)
+            for (int i = 0; i < DaneTestowe.Count; i++)
             {
-                foreach (var treningowe in daneTreningowe)
+                foreach (var treningowe in DaneTreningowe)
                 {
-                    daneTestowe[i].metryki.Add(
+                    DaneTestowe[i].Metryki.Add(
                         new WartośćMetrykiDlaObiektu(
-                            metryka(treningowe, daneTestowe[i]),
-                            daneTreningowe.IndexOf(treningowe),
-                            treningowe.klasaDecyzyjna
+                            metryka(treningowe, DaneTestowe[i]),
+                            DaneTreningowe.IndexOf(treningowe),
+                            treningowe.KlasaDecyzyjna
                         )
                     );
                 }
@@ -63,50 +59,33 @@ namespace Projekt_Programowanie_Obiektowe___KNN
         }
         public void LiczDzielISortuj()
         {
-            for (int i = 0; i < daneTestowe.Count; i++)
+            for (int i = 0; i < DaneTestowe.Count; i++)
             {
-                daneTestowe[i].DzielISortuj();
+                DaneTestowe[i].DzielISortuj();
             }
         }
-        public void SprawdźK()
-        {
-            var maxK = daneTestowe[0].klasy.FirstOrDefault().Value.Count();
-            foreach (var obiektDecyzyjny in daneTestowe)
-            {
-                foreach (var klasa in obiektDecyzyjny.klasy)
-                {
-                    if (maxK > klasa.Value.Count)
-                    {
-                        maxK = klasa.Value.Count;
-                    }
-                }
-            }
-            if (IlośćSąsiadów > maxK)
-            {
-                IlośćSąsiadów = maxK;
-            }
-        }
+
         public void KlasyfikujObiekty()
         {
-            for (int i = 0; i < daneTestowe.Count; i++)
+            for (int i = 0; i < DaneTestowe.Count; i++)
             {
-                daneTestowe[i].Klasyfikuj(IlośćSąsiadów);
+                DaneTestowe[i].Klasyfikuj(IlośćSąsiadów);
             }
         }
         Dictionary<int, List<int?>> SklasyfikowanePoprawnie = new Dictionary<int, List<int?>>();
         public void LiczMacierzPredykcji()
         {
-            SklasyfikowanePoprawnie= new Dictionary<int, List<int?>>();
-            foreach (var obiekt in daneTestowe)
+            SklasyfikowanePoprawnie = new Dictionary<int, List<int?>>();
+            foreach (var obiekt in DaneTestowe)
             {
-                bool czyKluczJużIstnieje = !SklasyfikowanePoprawnie.ContainsKey(obiekt.klasaDecyzyjna);
+                bool czyKluczJużIstnieje = !SklasyfikowanePoprawnie.ContainsKey(obiekt.KlasaDecyzyjna);
                 if (czyKluczJużIstnieje)
                 {
-                    SklasyfikowanePoprawnie[obiekt.klasaDecyzyjna] = new List<int?>();
+                    SklasyfikowanePoprawnie[obiekt.KlasaDecyzyjna] = new List<int?>();
                 }
-                SklasyfikowanePoprawnie[obiekt.klasaDecyzyjna].Add(obiekt.SklasyfikowanyDoKlasy);
+                SklasyfikowanePoprawnie[obiekt.KlasaDecyzyjna].Add(obiekt.SklasyfikowanyDoKlasy);
             }
-            macierzPredykcji.Dane = SklasyfikowanePoprawnie;
+            MacierzPredykcji.Dane = SklasyfikowanePoprawnie;
         }
     }
 }
